@@ -8,7 +8,7 @@ import { Controller } from "react-hook-form";
 
 export default function MySelectField(props) {
 
-  const { label, placeholder, name, control } = props;
+  const { label, name, control } = props;
 
 
 
