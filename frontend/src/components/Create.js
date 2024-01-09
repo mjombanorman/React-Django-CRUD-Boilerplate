@@ -5,8 +5,33 @@ import MySelectField from "./forms/MySelectField";
 import MyTextField from "./forms/MyTextField";
 import MyTextAreaField from "./forms/MyTextAreaField";
 import { useForm } from "react-hook-form";
+import api from "./helpers/Gateway";
+import Dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
+
 const Create = () => {
-  const { handleSubmit, reset, setValue, control } = useForm();
+  const navigate = useNavigate();
+  const defaultValues = {
+    name: "",
+    comments: "",
+    status: "",
+  };
+
+  const { handleSubmit, reset, setValue, control } = useForm({
+    defaultValues: defaultValues,
+  });
+
+  const submit = (data) => {
+    api
+      .post(`project/`, {
+        name: data.name,
+        status: data.status,
+        start_date: Dayjs(data.start_date["$d"]).format("YYYY-MM-DD"),
+        end_date: Dayjs(data.end_date["$d"]).format("YYYY-MM-DD"),
+        comment: data.comment,
+      })
+      .then((res) => navigate("/"));
+  };
 
   return (
     <div>
@@ -34,7 +59,7 @@ const Create = () => {
           sx={{
             padding: "20px",
           }}>
-          <form onSubmit={handleSubmit((data) => console.log(data))}>
+          <form onSubmit={handleSubmit(submit)}>
             <MyTextField
               label="Name"
               placeholder="Name"
@@ -49,12 +74,9 @@ const Create = () => {
             <MyDatePicker label="End Date" control={control} name="end_date" />
             <MySelectField label="Status" control={control} name="status" />
             <MyTextAreaField label="Comment" control={control} name="comment" />
-            <Button variant="outlined" type="submit" sx={{marginTop:"20px"}}
-                    >
-   
+            <Button variant="outlined" type="submit" sx={{ marginTop: "20px" }}>
               Save
             </Button>
-         
           </form>
         </Box>
       </Box>
