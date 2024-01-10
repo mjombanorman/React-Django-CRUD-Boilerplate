@@ -3,4 +3,5 @@ from .models import *
 from django.contrib.auth.models import User
 
 
+admin.site.register(ProjectManager)
 admin.site.register(Project)

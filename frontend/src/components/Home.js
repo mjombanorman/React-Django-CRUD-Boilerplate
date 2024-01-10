@@ -20,6 +20,8 @@ const Home = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  
   //should be memoized or stable
   const columns = useMemo(
     () => [
@@ -28,6 +30,7 @@ const Home = () => {
         header: "Name",
         size: 150,
       },
+ 
       {
         accessorKey: "status",
         header: "Status",

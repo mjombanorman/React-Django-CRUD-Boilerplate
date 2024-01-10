@@ -7,7 +7,7 @@ import Select from "@mui/material/Select";
 import { Controller } from "react-hook-form";
 import { FormHelperText } from "@mui/material";
 export default function MySelectField(props) {
-  const { label, name, control } = props;
+  const { label, name, control,options } = props;
 
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -29,9 +29,9 @@ export default function MySelectField(props) {
                 name={name}
                 error={!!error}>
                 
-                <MenuItem value={"open"}>Open</MenuItem>
-                <MenuItem value={"in-progress"}>In Progress</MenuItem>
-                <MenuItem value={"closed"}>Closed</MenuItem>
+                { options.map((option) => (<MenuItem value={option.id}>{option.name}</MenuItem>)) }
+                
+            
               </Select>
               <FormHelperText sx={{color:"#d32f2f"}}>{error?.message}</FormHelperText>
             </>
