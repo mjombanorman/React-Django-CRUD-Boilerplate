@@ -6,7 +6,7 @@ import Dayjs from "dayjs";
 import { Box, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-
+import { Link } from "react-router-dom";
 const Home = () => {
   const [myData, setMyData] = useState();
   const [loading, setLoading] = useState(true);
@@ -62,9 +62,9 @@ const Home = () => {
           columns={columns}
           data={myData}
           enableRowActions
-          renderRowActions={({ row, table }) => (
+          renderRowActions={({ row }) => (
             <Box sx={{ display: "flex", flexWrap: "nowrap", gap: "8px" }}>
-              <IconButton color="secondary">
+              <IconButton color="secondary"component={Link} to={`edit/${row.original.id}`}>
                 <EditIcon />
               </IconButton>
 
