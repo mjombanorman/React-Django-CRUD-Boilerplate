@@ -64,11 +64,17 @@ const Home = () => {
           enableRowActions
           renderRowActions={({ row }) => (
             <Box sx={{ display: "flex", flexWrap: "nowrap", gap: "8px" }}>
-              <IconButton color="secondary"component={Link} to={`edit/${row.original.id}`}>
+              <IconButton
+                color="secondary"
+                component={Link}
+                to={`edit/${row.original.id}`}>
                 <EditIcon />
               </IconButton>
 
-              <IconButton color="error">
+              <IconButton
+                color="error"
+                component={Link}
+                to={`delete/${row.original.id}`}>
                 <DeleteIcon />
               </IconButton>
             </Box>
