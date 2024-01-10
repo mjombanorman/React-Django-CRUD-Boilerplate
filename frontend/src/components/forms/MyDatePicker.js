@@ -17,6 +17,8 @@ export default function MyDatePicker(props) {
           formState,
         }) => (
           <DatePicker
+            
+            sx={{ width: "100%" }}
             onChange={onChange}
             value={value}
             placeholder={placeholder}
