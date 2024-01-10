@@ -23,6 +23,8 @@ export default function MyTextField(props) {
           label={label}
           variant="outlined"
           placeholder={placeholder}
+          error={!!error}
+          helperText={error ? error.message : null}
         />
       )}
     />

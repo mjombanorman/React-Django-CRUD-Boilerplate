@@ -14,7 +14,6 @@ const Home = () => {
   const getData = () => {
     api.get(`project/`).then((res) => {
       setMyData(res.data);
-      console.log(res.data);
       setLoading(false);
     });
   };

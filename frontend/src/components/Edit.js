@@ -24,8 +24,7 @@ const Edit = () => {
       setValue("start_date", Dayjs(res.data.start_date));
       setValue("end_date", Dayjs(res.data.end_date));
       setValue("comment", res.data.comment);
-      console.log(res.data);
-      setLoading(false);
+        setLoading(false);
     });
   };
 

@@ -5,12 +5,9 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Controller } from "react-hook-form";
-
+import { FormHelperText } from "@mui/material";
 export default function MySelectField(props) {
-
   const { label, name, control } = props;
-
-
 
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -19,16 +16,25 @@ export default function MySelectField(props) {
         <Controller
           name={name}
           control={control}
-          render={({ field: { onChange, value } }) => (
-            <Select
-              onChange={onChange}
-              value={value}
-              label={label}
-              name={name}>
-              <MenuItem value={"open"}>Open</MenuItem>
-              <MenuItem value={"in-progress"}>In Progress</MenuItem>
-              <MenuItem value={"closed"}>Closed</MenuItem>
-            </Select>
+          render={({
+            field: { onChange, value },
+            fieldState: { error },
+            formState,
+          }) => (
+            <>
+              <Select
+                onChange={onChange}
+                value={value}
+                label={label}
+                name={name}
+                error={!!error}>
+                
+                <MenuItem value={"open"}>Open</MenuItem>
+                <MenuItem value={"in-progress"}>In Progress</MenuItem>
+                <MenuItem value={"closed"}>Closed</MenuItem>
+              </Select>
+              <FormHelperText sx={{color:"#d32f2f"}}>{error?.message}</FormHelperText>
+            </>
           )}
         />
       </FormControl>

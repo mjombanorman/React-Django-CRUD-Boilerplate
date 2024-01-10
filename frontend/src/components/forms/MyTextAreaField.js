@@ -16,13 +16,14 @@ export default function MyTextAreaField(props) {
         <TextField
           onChange={onChange}
           value={value}
-           
           label={label}
           placeholder={placeholder}
           multiline
           id="outlined-basic"
           variant="outlined"
           rows={4}
+          error={!!error}
+          helperText={error ? error.message : null}
         />
       )}
     />

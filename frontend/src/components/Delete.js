@@ -12,8 +12,7 @@ const Delete = () => {
 
   const getData = () => {
     api.get(`project/${myID}`).then((res) => {
-      console.log(res.data);
-      setMyData(res.data);
+       setMyData(res.data);
       setLoading(false);
     });
   };
